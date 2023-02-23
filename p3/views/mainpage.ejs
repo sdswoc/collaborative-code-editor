@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script>
+    const ROOM_ID = "<%= roomId %>"
+  </script>
+  <script defer src="https://unpkg.com/peerjs@1.2.0/dist/peerjs.min.js"></script>
+  <script src="/socket.io/socket.io.js" defer></script>
+  <script src="client.js" defer></script>
+  <title>TeleCode</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h2>Your Room ID is : <%=roomId%></h2>
+  <a href="/<%=roomId%>"> Copy this link</a>
+  <div class="fullpage">
+    <div class="codeEditor"></div>
+    <div class="chat">
+      <div class="videoChat">
+        <div id="video-grid"></div>
+      </div>
+      <div class="textChat">
+        <div class="messagePanel">
+          
+        </div>
+        <div class="send">
+        <form action="#" id="messageBox">
+          <input type="text" name="message" id="message">
+          <button class="sendBtn" type="submit">Send</button>
+        </form>
+      </div>
+      </div>
+    </div>
+  </div>
+  
+</body>
+</html>

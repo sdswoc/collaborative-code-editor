@@ -1,0 +1,58 @@
+.fullpage{
+    display: flex;
+    flex-direction: row;
+}
+
+.codeEditor{
+    background-color: rgb(41, 41, 41);
+    width: 50vi;
+    height: 95vb;
+}
+
+.chat {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(18, 0, 55);
+    width: 50vi;
+    height: 95vb;
+}
+
+.videoChat{
+    display:flex;
+    width: 50vi;
+    height: 25vh;
+}
+
+#video-grid {
+    display: flex;
+    width: 50vi;
+    height: 25vh;
+}
+
+.textChat {
+    background-color: gray;
+    height: 75vh;
+    width: 50vi;
+}
+
+.messagePanel{
+    width: 45vi;
+    height: 50vh;
+    background-color: aliceblue;
+    opacity: 0.6;
+}
+
+.send{
+    width: 45vi;
+    height: 25vh;
+}
+
+.right{
+    float: right;
+    clear: both;
+}
+
+.left{
+    float: left;
+    clear: both;
+}
