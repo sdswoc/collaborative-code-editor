@@ -1,33 +1,52 @@
 import Peer from 'peerjs';
 import CodeMirror from 'codemirror';
 import * as Y from 'yjs';
-import { WebsocketProvider } from 'y-websocket'; 
+import { WebsocketProvider } from 'y-websocket';
 import { CodeMirrorBinding } from 'y-codemirror';
 import 'codemirror/mode/javascript/javascript.js';
+import 'codemirror/mode/htmlmixed/htmlmixed.js';
+import 'codemirror/mode/css/css.js';
+
+
+
+
+
+
+const currentPath = window.location.pathname;
+const roomID = currentPath.slice(-36);
+
+
+const data = {
+  roomID:roomID
+};
+
+
 
 const myPeer = new Peer(undefined,{
-    host:'/',
-    port:'3001'
-  })
-let stream;
-window.addEventListener('load',()=>{
-  const DisplayID = document.getElementById('UserID')
-  const videoGrid = document.getElementById('video-grid')
-  const form = document.getElementById('form')
-  const userIdInput = document.getElementById('userId')
-  const myVideo = document.createElement('video')
-  const editorBox = document.getElementById('editor')
-
-  myPeer.on('open',(id)=>{
-    DisplayID.innerHTML=id 
+  host:'/',
+  port:'3001',
 })
 
+
+
+axios.post('/getData',data)
+  .then((res)=>{
+   const language = res.data.language
+  })
+
+window.addEventListener('load',()=>{
+  let stream; 
+
+  const videoGrid = document.getElementById('video-grid')
+  const myVideo = document.createElement('video')
+  const editorBox = document.getElementById('editor')
 
 
 async function init(){
   stream = await navigator.mediaDevices.getUserMedia({video:true,audio:false})
   addVideoStream(myVideo,stream)
 }
+
 
 function addVideoStream(Video,stream){
   Video.srcObject = stream
@@ -38,12 +57,25 @@ function addVideoStream(Video,stream){
 }
 init()
 
-form.addEventListener('submit',(e)=>{
-  e.preventDefault();
-  const userID = userIdInput.value; 
-  userIdInput.value = '';
-  connectToNewUser(userID,stream)
+
+let clientId
+
+myPeer.on('open',(id)=>{
+  console.log('my client ID:',id)
+  const peerInfo = {
+    clientId:id,
+    roomId:roomID
+  }
+  axios.post('/peerJs',peerInfo)
+  .then((res)=>{
+    console.log('others client id sent by server',res.data)
+    clientId = res.data;
+    console.log("others client ID:",clientId)
+    connectToNewUser(clientId,stream);
+  })
 })
+
+
 
 myPeer.on('call',call=>{
   call.answer(stream)
@@ -65,14 +97,18 @@ function connectToNewUser(id,stream){
 const ydoc = new Y.Doc()
 const provider = new WebsocketProvider(
   'ws://localhost:1234',
-  '',
+  roomID,
   ydoc
 )
 
+
+
 const ytext = ydoc.getText('codemirror')
 
+
+
 const editor = CodeMirror(editorBox,{
-  mode:'javascript',
+  mode:language.innerHTML,
   lineNumbers:true,
   theme:'midnight'
 })
