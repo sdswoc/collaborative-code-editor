@@ -13,31 +13,38 @@
     <% const roomID = data.roomID %>
     <% const username = data.users %>
     <% const language = data.language %>
-    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #151446;">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#"><i class="fa-solid fa-code"></i>TeleCode</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item" style="display: flex; justify-content: center;">
-                <h5 id="UserID" style="color: white;" class="text-center"><%=roomID%></h5>
-              </li>
-            </ul>
-          </div>
+    <nav class="navbar navbar-expand-lg navbar-custom">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#"><img src="../../Screenshot 2023-03-12 161528.png" alt="" style="height: 50px; width: 50px; border-radius: 10px;"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item" style="padding: 5px;">
+              <a class="nav-link active" aria-current="page" href="#" style="color: white;">Home</a>
+            </li>
+            <li class="nav-item" style="padding: 5px;" >
+              <button type="button" class="btn btn-outline-primary">Sign In</button>
+            </li>
+            <li class="nav-item" style="padding: 5px;">
+              <button type="button" class="btn btn-primary">Sign Up</button>
+            </li>
+          </ul>
         </div>
-      </nav>
+      </div>
+    </nav>
+      <h5 id="UserID" style="color: black;" class="text-center"><%=roomID%></h5>
     <h3 id="username"><%= username %></h3>
     <h3 id="language"><%=language%></h3>
     <div id="fullpage">
-    <div id="editor"></div>
-    <div id="video-grid"></div>
-    
-</div>
-    <nav class="navbar sticky-bottom navbar-dark" style="background-color: #151446;" id="footer">
+      <div id="editor"></div>
+      <div id="video-grid"></div>
+
+    </div>
+    <nav class="navbar fixed-bottom navbar-dark" style="background-color: #001220;" id="footer">
         <div class="container-fluid">
-          <a href="https://github.com/ArpanMahanty01" class="navbar-brand" href="#">Made with <i class="fa-solid fa-heart"></i> by Arpan Mahanty  <i class="fa-brands fa-github"></i></a>
+          <a href="https://github.com/ArpanMahanty01" target="_blank" class="navbar-brand" href="#">Made with <i class="fa-solid fa-heart"></i> by Arpan Mahanty  <i class="fa-brands fa-github"></i></a>
         </div>
       </nav>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>

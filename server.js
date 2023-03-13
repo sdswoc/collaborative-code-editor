@@ -22,6 +22,10 @@ app.use(bodyParser.json());
 
 app.set('view engine','ejs');
 
+app.get('/',(req,res)=>{
+    res.render('introPage')
+})
+
 app.get('/TeleCode',(req,res)=>{
     res.render('startpage')
 })

@@ -1,3 +1,7 @@
+.navbar-custom{
+  background-color: #001220;
+}
+
 #fullpage{
     background-color:#1E1E1E;
 }
@@ -11,6 +15,7 @@
     /* Set height, width, borders, and global font properties here */
     font-family: monospace;
     height: 300px;
+    width: 50%;
     color: black;
     direction: ltr;
   }

@@ -4,13 +4,6 @@ import * as Y from 'yjs';
 import { WebsocketProvider } from 'y-websocket';
 import { CodeMirrorBinding } from 'y-codemirror';
 import 'codemirror/mode/javascript/javascript.js';
-import 'codemirror/mode/htmlmixed/htmlmixed.js';
-import 'codemirror/mode/css/css.js';
-
-
-
-
-
 
 const currentPath = window.location.pathname;
 const roomID = currentPath.slice(-36);
@@ -110,7 +103,7 @@ const ytext = ydoc.getText('codemirror')
 const editor = CodeMirror(editorBox,{
   mode:language.innerHTML,
   lineNumbers:true,
-  theme:'midnight'
+  theme:'midnight',
 })
 
 const binding = new CodeMirrorBinding(ytext,editor,provider.awareness)
