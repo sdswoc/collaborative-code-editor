@@ -20,27 +20,27 @@
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item" style="padding: 5px;">
+            <button id="CopyRoomId" class="btn btn-outline-light">Copy Room ID</button>
+            </li>
+          </ul>
           <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
             <li class="nav-item" style="padding: 5px;">
-              <a class="nav-link active" aria-current="page" href="#" style="color: white;">Home</a>
-            </li>
-            <li class="nav-item" style="padding: 5px;" >
-              <button type="button" class="btn btn-outline-primary">Sign In</button>
-            </li>
-            <li class="nav-item" style="padding: 5px;">
-              <button type="button" class="btn btn-primary">Sign Up</button>
+              <form action="/CodeSync/logout" method="post">
+                <button type="submit" class="btn btn-outline-danger">Log Out</button>
+              </form>
             </li>
           </ul>
         </div>
       </div>
     </nav>
-      <h5 id="UserID" style="color: black;" class="text-center"><%=roomID%></h5>
-    <h3 id="username"><%= username %></h3>
-    <h3 id="language"><%=language%></h3>
+      <h5 id="UserID" style="color: black;opacity:0;width:0;height:0;" class="text-center"><%=roomID%></h5>
+    <button class="btn btn-outline btn-rounded btn-warning fongt-weight-bold" id="language"><%=language%></button>
     <div id="fullpage">
       <div id="editor"></div>
+      <button id="download">Download</button>
       <div id="video-grid"></div>
-
     </div>
     <nav class="navbar fixed-bottom navbar-dark" style="background-color: #001220;" id="footer">
         <div class="container-fluid">
@@ -52,5 +52,13 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     
     <script src="../../client.bundle.js"></script>
+    <script>
+      const copyText = document.getElementById("CopyRoomId");
+      const roomid = document.getElementById('UserID')
+      copyText.addEventListener('click',()=>{
+        copyTextValue = roomid.innerHTML;
+        navigator.clipboard.writeText(copyTextValue)
+      })
+    </script>
 </body>
 </html>

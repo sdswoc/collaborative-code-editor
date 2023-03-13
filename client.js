@@ -33,6 +33,7 @@ window.addEventListener('load',()=>{
   const videoGrid = document.getElementById('video-grid')
   const myVideo = document.createElement('video')
   const editorBox = document.getElementById('editor')
+  const dwnldBtn = document.getElementById('download')
 
 
 async function init(){
@@ -68,15 +69,22 @@ myPeer.on('open',(id)=>{
   })
 })
 
-
+myPeer.on('disconnected',()=>{
+  console.log('__client disconnected__')
+  remoteVideo = document.getElementById("remoteVideo");
+  remoteVideo.remove();
+})
 
 myPeer.on('call',call=>{
   call.answer(stream)
   const video = document.createElement('video')
+  video.setAttribute('id','remoteVideo')
   call.on('stream',userVideoStream=>{
     addVideoStream(video,userVideoStream)
   })
 })
+
+
 
 
 function connectToNewUser(id,stream){
@@ -107,4 +115,16 @@ const editor = CodeMirror(editorBox,{
 })
 
 const binding = new CodeMirrorBinding(ytext,editor,provider.awareness)
+
+dwnldBtn.addEventListener('click',()=>{
+  const filename = prompt('File Name?')
+  const data = editor.getValue();
+  const element = document.createElement('a');
+  element.setAttribute('href','data:text/plain; charset=utf-8'+ encodeURIComponent(data));
+  element.setAttribute('download',filename);
+  document.body.appendChild(element);
+  element.click();
+  document.body.removeChild(element)
+})
+
 })
