@@ -16,9 +16,10 @@ mongoose.set('strictQuery',false);
 
 const REDIRECT_URI = process.env.REDIRECT_URI;
 const CLIENT_ID = process.env.CLIENT_ID;
-const SECRET_ID = process.env.SECRET_ID
+const SECRET_ID = process.env.SECRET_ID;
+const MONGODB_URI = process.env.MONGODB_URI;
 
-const url ='mongodb+srv://arpanmahanty01:585401@cluster0.c1v9dlc.mongodb.net/?retryWrites=true&w=majority'
+const url =MONGODB_URI
 mongoose.connect(url,{useNewUrlParser:true, useUnifiedTopology: true})
     .then(()=>{
         console.log('MONGO CONNECTION OPEN')

@@ -4,7 +4,7 @@
 
 
 body{
-    background-image: url(./stacked-waves-haikei.svg);
+    background-image: url(./svg/stacked-waves-haikei.svg);
     height: 100vh;
     z-index: -2;
 }

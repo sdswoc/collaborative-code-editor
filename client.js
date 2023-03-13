@@ -32,6 +32,7 @@ window.addEventListener('load',()=>{
 
   const videoGrid = document.getElementById('video-grid')
   const myVideo = document.createElement('video')
+  myVideo.setAttribute('id','myVideo')
   const editorBox = document.getElementById('editor')
   const dwnldBtn = document.getElementById('download')
 
@@ -69,11 +70,6 @@ myPeer.on('open',(id)=>{
   })
 })
 
-myPeer.on('disconnected',()=>{
-  console.log('__client disconnected__')
-  remoteVideo = document.getElementById("remoteVideo");
-  remoteVideo.remove();
-})
 
 myPeer.on('call',call=>{
   call.answer(stream)
@@ -83,7 +79,6 @@ myPeer.on('call',call=>{
     addVideoStream(video,userVideoStream)
   })
 })
-
 
 
 

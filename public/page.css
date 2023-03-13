@@ -2,13 +2,11 @@
   background-color: #001220;
 }
 
-
+#fullpage{
+    background-image: url(/svg/blurry-gradient-haikei.svg);
+}
 .fa-heart{
     color:red;
-}
-
-video{
-  height: 200px;
 }
 
 /* BASICS */
@@ -17,12 +15,21 @@ video{
     /* Set height, width, borders, and global font properties here */
     font-family: monospace;
     height: 300px;
-    width: 50%;
+    width: 100%;
     color: black;
     direction: ltr;
-    margin: 10px;
   }
-  
+
+#myVideo{
+  border: 5px solid black;
+  margin: 10px;
+}
+
+#remoteVideo{
+  border: 5px solid black;
+  margin: 10px;
+}
+
   /* PADDING */
   
   .CodeMirror-lines {
