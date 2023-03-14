@@ -17,9 +17,9 @@ mongoose.set('strictQuery',false);
 const REDIRECT_URI = process.env.REDIRECT_URI;
 const CLIENT_ID = process.env.CLIENT_ID;
 const SECRET_ID = process.env.SECRET_ID;
-const MONGODB_URI = process.env.MONGODB_URI;
+const MONGODB_STRING = process.env.MONGODB_STRING;
 
-const url =MONGODB_URI
+const url =MONGODB_STRING
 mongoose.connect(url,{useNewUrlParser:true, useUnifiedTopology: true})
     .then(()=>{
         console.log('MONGO CONNECTION OPEN')
